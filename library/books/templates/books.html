@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ol>
+        {% for book in books %}
+        <li>
+            <a href="{% url 'books-show' id=book.id %}">{{book.title}}</a>
+        </li>
+        {% endfor %}
+    </ol>
+{% endblock content%}

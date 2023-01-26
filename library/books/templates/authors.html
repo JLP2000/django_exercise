@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ol>
+        {% for author in authors %}
+        <li>
+            <a href="{% url 'books-authors' %}">{{author.name}}</a>
+        </li>
+        {% endfor %}
+    </ol>
+{% endblock content%}

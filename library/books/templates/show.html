@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{book.title}}</h1>
+    <h2>Written by {{book.author}}</h2>
+    {% if not book.borrower %}
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Borrow"/>
+        </form>
+    {% else %}
+        {% if book.borrower == user %}
+            <form method="put">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Return Book"/>
+            </form>
+        {% else %}
+            <p> {{book.title}} is currently being borrowed by {{book.borrower}} </p>
+        {% endif %}
+    {% endif %}
+{% endblock content%}
